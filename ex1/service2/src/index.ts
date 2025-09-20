@@ -1,7 +1,6 @@
 import express from "express";
 import fs from "fs";
 import path from "path";
-import { promisify } from "util";
 import checkDiskSpace from "check-disk-space";
 import fetch from "node-fetch";
 
