@@ -7,7 +7,7 @@ import fetch from "node-fetch";
 const app = express();
 const started = Date.now();
 const STORAGE_URL = process.env.STORAGE_URL || "http://storage:8080";
-const VSTORAGE_PATH = process.env.VSTORAGE_PATH || "/vstorage/log.txt";
+const VSTORAGE_PATH = process.env.VSTORAGE_PATH || "/var/vstorage/log.txt";
 
 function isoUtc(): string {
   return new Date().toISOString().replace(/\.\d{3}Z$/, "Z");

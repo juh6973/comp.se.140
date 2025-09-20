@@ -9,9 +9,9 @@ import datetime
 app = FastAPI()
 START = time.monotonic()
 
-STORAGE_URL = os.getenv("STORAGE_URL")
-SERVICE2_URL = os.getenv("SERVICE2_URL")
-VSTORAGE_PATH = os.getenv("VSTORAGE_PATH")
+STORAGE_URL = os.getenv("STORAGE_URL", "http://storage:8080")
+SERVICE2_URL = os.getenv("SERVICE2_URL", "http://service2:3000")
+VSTORAGE_PATH = os.getenv("VSTORAGE_PATH", "/var/vstorage/log.txt")
 
 
 def iso_utc() -> str:
