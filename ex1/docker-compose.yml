@@ -16,9 +16,9 @@ services:
     container_name: service2
     environment:
       - STORAGE_URL=http://storage:8080
-      - VSTORAGE_PATH=/var/vstorage/log.txt
+      - VSTORAGE_PATH=/vstorage/log.txt
     volumes:
-      - ./vstorage:/var/vstorage/log.txt
+      - ./vstorage:/vstorage
     networks:
       - backend
 
@@ -28,16 +28,16 @@ services:
     environment:
       - STORAGE_URL=http://storage:8080
       - SERVICE2_URL=http://service2:3000
-      - VSTORAGE_PATH=/var/vstorage/log.txt
+      - VSTORAGE_PATH=/vstorage/log.txt
     volumes:
-      - ./vstorage:/var/vstorage/log.txt
+      - ./vstorage:/vstorage
     ports:
-      - "8199:8000"   # Service1 is the only exposed service
+      - "8199:8000"
     networks:
       - backend
 
 volumes:
-  storage:  # Persistent volume for storage service
+  storage:
 
 networks:
   backend:
