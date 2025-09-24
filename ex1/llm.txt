@@ -1,0 +1,6 @@
+Utilization of LLMs
+- The used LLM tool: Claude Sonnet 4 & ChatGPT-5
+- Motivation of using LLMs: Auto-complete in code editor (with Copilot) and making report text more fluent (with ChatGPT)
+- How and why LLM helped: Auto-complete helps to write code faster while keeping the coder tightly in the loop. ChatGPT was used in some situations to make sentences more fluent.
+- What kind of mistakes LLM did: Sometimes the LLM suggested incompatible library versions in the code and got some contextual information incorrect while writing the documents.
+- What were things that LLM was not able to provide: LLM worked well as an assistant. However, I wouldn't trust to architecture any API interfaces or application design as I know from other times that usually the solutions doesn't work
