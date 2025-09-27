@@ -9,7 +9,7 @@ I used my personal laptop as the development and run environment for the applica
 - Docker Compose: v2.23.3-desktop.2
 
 ## 2. Application Architecture
-TODO
+![A diagram showing the services, network and storage.](./graphs/ex1_uml.drawio.png)
 
 ## 3. Content Analysis
 The services measure the disk space and uptime from within a docker container. The disk space is obtained from the container's root filesystem. This is not the same as host machine's disk space as docker utilizes overlay storage drives that limits the view into the disk space. Uptime is based on a measures of time since the container started. These measurements are relevant for monitoring the container runtime but doesn't assess host-level uptime. To reflect the total disk space of the host, the container should be mounted to the host's filesystem and highlight that the uptime refers to container lifecycle.
