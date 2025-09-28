@@ -19,6 +19,7 @@ There were two persistent storage solutions: A named volume and a bind mounted l
 
 ## 5. Teacher's Instructions
 ***How to run the application:**
+- from the repo root `cd ex1`
 - `docker-compose up –-build -d`
 To inspect the status:
 - `curl localhost:8199/status`
