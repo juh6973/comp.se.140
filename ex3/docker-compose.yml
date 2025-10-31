@@ -16,9 +16,6 @@ services:
     container_name: service2
     environment:
       - STORAGE_URL=http://storage:8080
-      - VSTORAGE_PATH=/vstorage/log.txt
-    volumes:
-      - ./vstorage:/vstorage
     networks:
       - backend
 
@@ -28,9 +25,6 @@ services:
     environment:
       - STORAGE_URL=http://storage:8080
       - SERVICE2_URL=http://service2:3000
-      - VSTORAGE_PATH=/vstorage/log.txt
-    volumes:
-      - ./vstorage:/vstorage
     ports:
       - "8199:8000"
     networks:

@@ -7,7 +7,6 @@ import fetch from "node-fetch";
 const app = express();
 const started = Date.now();
 const STORAGE_URL = process.env.STORAGE_URL || "http://storage:8080";
-const VSTORAGE_PATH = process.env.VSTORAGE_PATH || "/vstorage/log.txt";
 
 function isoUtc(): string {
   return new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
@@ -38,9 +37,6 @@ app.get("/status", async (_req, res) => {
   } catch (err) {
     console.error("Failed to send to storage:", err);
   }
-
-  await fs.promises.mkdir(path.dirname(VSTORAGE_PATH), { recursive: true });
-  await fs.promises.appendFile(VSTORAGE_PATH, rec + "\n", "utf8");
   res.type("text/plain").send(rec);
 });
 

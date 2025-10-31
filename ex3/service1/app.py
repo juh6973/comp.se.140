@@ -11,7 +11,6 @@ START = time.monotonic()
 
 STORAGE_URL = os.getenv("STORAGE_URL", "http://storage:8080")
 SERVICE2_URL = os.getenv("SERVICE2_URL", "http://service2:3000")
-VSTORAGE_PATH = os.getenv("VSTORAGE_PATH", "/vstorage/log.txt")
 
 
 def iso_utc() -> str:
@@ -34,11 +33,6 @@ def my_record() -> str:
 
     return f"{timestamp}: uptime {uptime} hours, free disk in root: {free_disk} MBytes"
 
-async def append_vstorage(line: str) -> None:
-    os.makedirs(os.path.dirname(VSTORAGE_PATH), exist_ok=True)
-    with open(VSTORAGE_PATH, "a", encoding="utf-8") as f:
-        f.write(line + "\n")
-
 @app.get("/status", response_class=PlainTextResponse)
 async def status() -> str:
     rec1 = my_record()
@@ -46,7 +40,6 @@ async def status() -> str:
     async with httpx.AsyncClient() as client:
         # send to Storage
         await client.post(f"{STORAGE_URL}/log", content=rec1, headers={"Content-Type": "text/plain"})
-        await append_vstorage(rec1) # write to vStorage
         res = await client.get(f"{SERVICE2_URL}/status") # forward to Service2
         rec2 = res.text
 
